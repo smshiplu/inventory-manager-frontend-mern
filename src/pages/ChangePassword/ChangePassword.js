@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 import { ComponentHeader, Loading, SidebarMenu } from "../../components";
 import { FormField } from "./components/FormField";
-import { toast } from "react-toastify";
+
 import { updatePassword } from "../../services";
 import { selectMenuToggle } from "../../store/btnSlice";
-import { useSelector } from "react-redux";
+
 
 const initialState = {
   currentPassword: "",
@@ -21,7 +23,6 @@ export const ChangePassword = () => {
   const menuToggle = useSelector(selectMenuToggle);
   
   const [isLoading, setIsLoading] = useState(false);
-  const [sidebarToggle, setSidebarToggle] = useState(false);
   const [formData, setFormData] = useState(initialState);
 
   const handleInputChange = (e) => {
