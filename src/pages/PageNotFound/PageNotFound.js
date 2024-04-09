@@ -18,7 +18,6 @@ export const PageNotFound = () => {
           </div>
         </div>
       </section>
-
     </main>
   )
 }
