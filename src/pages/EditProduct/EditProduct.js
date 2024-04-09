@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-
 import { ComponentHeader, SidebarMenu, Loading, ProductForm } from "../../components";
 import { updateProduct, getProduct } from "../../services";
 import { selectMenuToggle } from "../../store/btnSlice";
