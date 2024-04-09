@@ -4,14 +4,12 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { ComponentHeader, Loading, SidebarMenu } from "../../components";
-import { SET_USER, selectUser } from "../../store/authSlice";
+
 import { getUser, updateUser } from "../../services";
-
-
-import UserPlaceholderImg from "../../assets/user-placeholder.jpg";
+import { SET_USER, selectUser } from "../../store/authSlice";
 import { SET_MENU_TOGGLE, selectMenuToggle } from "../../store/btnSlice";
 
-
+import UserPlaceholderImg from "../../assets/user-placeholder.jpg";
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
