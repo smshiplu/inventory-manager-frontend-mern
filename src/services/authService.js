@@ -27,10 +27,6 @@ export const register = async (userData) => {
 export const login = async (userData) => {
   try {
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, userData);
-
-    if(response.statusText !== "OK") {
-      toast.error("User cannot be logged in, try again");
-    }
     return response.data;
 
   } catch (error) {
