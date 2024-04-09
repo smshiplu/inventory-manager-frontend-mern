@@ -7,7 +7,7 @@ import { ComponentHeader, Loading, SidebarMenu } from "../../components";
 
 import { getUser, updateUser } from "../../services";
 import { SET_USER, selectUser } from "../../store/authSlice";
-import { SET_MENU_TOGGLE, selectMenuToggle } from "../../store/btnSlice";
+import { selectMenuToggle } from "../../store/btnSlice";
 
 import UserPlaceholderImg from "../../assets/user-placeholder.jpg";
 
@@ -16,7 +16,6 @@ export const EditProfile = () => {
   const menuToggle = useSelector(selectMenuToggle);
   const userRx = useSelector(selectUser);
   const navigate = useNavigate();
-  const [sidebarToggle, setSidebarToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(userRx);
   const [photo, setPhoto] = useState("");
@@ -68,9 +67,9 @@ export const EditProfile = () => {
     try {
       let imgUrl;
       if( photo && 
-          (photo.type == "image/png" ||
-          photo.type == "image/jpg" ||
-          photo.type == "image/jpeg") ) 
+          (photo.type === "image/png" ||
+          photo.type === "image/jpg" ||
+          photo.type === "image/jpeg") ) 
       {
           const image = new FormData();
           image.append("file", photo);
@@ -95,7 +94,7 @@ export const EditProfile = () => {
         bio: user.bio,
         photo: photo ? imgUrl : user.photo
       }
-      const data = await updateUser(formData);
+      await updateUser(formData);
       setIsLoading(false);
       toast.success("User updated successfully");
       navigate("/userProfile");
