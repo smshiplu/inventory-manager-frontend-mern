@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import HeroImage from "../../assets/inv-img.png";
 
