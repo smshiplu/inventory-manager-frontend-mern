@@ -18,9 +18,6 @@ export const createProduct = async (formData) => {
 export const getAllProducts = async () => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`);
-    if(response.statusText !== "OK") {
-      return toast.error(response.message);
-    }
     return response.data;
 
   } catch (error) {
