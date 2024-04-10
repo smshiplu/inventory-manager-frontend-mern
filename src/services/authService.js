@@ -49,11 +49,8 @@ export const loginStatus = async () => {
 // Logout 
 export const logout = async () => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`);
-    if(response.statusText !== "OK") {
-      toast.error("Cannot logout, try again");
-    }
-
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`);
+    toast.error("Logout successful");
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
     toast.error(message);
