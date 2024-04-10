@@ -50,7 +50,7 @@ export const loginStatus = async () => {
 export const logout = async () => {
   try {
     await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`);
-    toast.error("Logout successful");
+    toast.success("Logout successful");
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
     toast.error(message);
