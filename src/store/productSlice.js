@@ -86,6 +86,7 @@ export const {
 
 export const selectProducts = (state) => state.product.products;
 export const selectProduct = (state) => state.product.product;
+export const selectProductsForStat = (state) => state.product.productsForStat;
 export const selectSearchedProducts = (state) => state.product.searchedProducts;
 export const selectCurrentlyShowing = (state) => state.product.currentlyShowing;
 

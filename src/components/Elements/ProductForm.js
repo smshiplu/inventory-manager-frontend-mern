@@ -14,7 +14,7 @@ export const ProductForm = ({ product, productImage, imagePreview, description, 
       <input onChange={e => handleImageChange(e)} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" aria-describedby="user_avatar_help" id="image" name="image" type="file" />
       {imagePreview != null 
       ? (<div className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">
-        <img src={imagePreview} alt="image" className='w-full' />
+        <img src={imagePreview} alt={product.name} className='w-full' />
       </div>) 
       : (<div className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">No image set for this product</div>)}
 

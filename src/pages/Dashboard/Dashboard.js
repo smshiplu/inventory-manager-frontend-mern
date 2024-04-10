@@ -10,7 +10,7 @@ import { ProductTable } from "./components/ProductTable";
 import { ProductSearch } from "./components/ProductSearch";
 
 import { getAllProducts, deleteProduct } from "../../services";
-import { GET_ALL_PRODUCTS, SEARCH_PRODUCTS, SET_PRODUCTS_FOR_STAT, selectProducts, selectSearchedProducts} from "../../store/productSlice";
+import { GET_ALL_PRODUCTS, SEARCH_PRODUCTS, SET_PRODUCTS_FOR_STAT, selectProducts, selectSearchedProducts, selectProductsForStat} from "../../store/productSlice";
 import { selectMenuToggle } from "../../store/btnSlice";
 
 export const Dashboard = () => {
@@ -18,6 +18,7 @@ export const Dashboard = () => {
   const menuToggle = useSelector(selectMenuToggle);
   const products = useSelector(selectProducts);
   const searchedProducts = useSelector(selectSearchedProducts);
+  const productsForStat = useSelector(selectProductsForStat);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   
@@ -34,8 +35,10 @@ export const Dashboard = () => {
     }
   }
   useEffect(() => {
-    getProducts();
-  }, []); //eslint-disable-line
+    if(productsForStat.length < 1) {
+      getProducts();
+    }
+  }, [productsForStat]); //eslint-disable-line
 
   useEffect(() => {
     dispatch(SEARCH_PRODUCTS(searchTerm));
@@ -47,9 +50,10 @@ export const Dashboard = () => {
     } else if(searchTerm.length && searchedProducts.length === 0) {
       dispatch(GET_ALL_PRODUCTS([]));
     } else {
-      getProducts();
+      // getProducts();
+      dispatch(GET_ALL_PRODUCTS([...productsForStat]));
     }
-  }, [dispatch, searchTerm, searchedProducts]); //eslint-disable-line
+  }, [dispatch, searchTerm, searchedProducts, productsForStat]); //eslint-disable-line
   
 
   const handleDelete = async (id) => {
@@ -72,7 +76,7 @@ export const Dashboard = () => {
       <section className={`p-4  ${menuToggle ? "md:ml-0 sm:ml-0" : "md:ml-64 sm:ml-64"}`}>
         <div className="w-full mx-auto min-h-screen p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
           <Stats />
-          <hr className="my-8 border-2 border-gray-200 dark:border-gray-700 border-dashed" />
+          <hr className="my-8 border border-gray-200 dark:border-gray-700 border-dashed" />
           <ProductSearch 
             searchTerm={searchTerm} 
             setSearchTerm={setSearchTerm} 

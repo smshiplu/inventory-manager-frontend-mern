@@ -2,20 +2,26 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { LoadingTwo } from "../../../components";
 import { TableTrCard } from "./TableTrCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CURRENTLY_SHOWING } from "../../../store/productSlice";
-
+import { SET_ITEMS_PER_PAGE, selectItemsPerPage } from "../../../store/btnSlice";
 
 export const ProductTable = ({ products, isLoading, handleDelete }) => {
-  
+
   const dispatch = useDispatch();
+  const itemsPerPage = useSelector(selectItemsPerPage);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 4;
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
 
-
-  const endOffset = itemOffset + itemsPerPage;
-  const currentItems = products.length > itemsPerPage ? products.slice(itemOffset, endOffset) : products;
-  const pageCount = Math.ceil(products.length / itemsPerPage);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    const tempItems = products.length > itemsPerPage ? products.slice(itemOffset, endOffset) : products;
+    setCurrentItems([...tempItems]);
+    const tempCount = Math.ceil(products.length / itemsPerPage);
+    setPageCount(tempCount)
+  }, [itemOffset, itemsPerPage, pageCount, products]);
+  
 
   useEffect(() => {
     dispatch(CURRENTLY_SHOWING(currentItems.length));
@@ -66,22 +72,31 @@ export const ProductTable = ({ products, isLoading, handleDelete }) => {
           </tbody>
         </table>
       </div>
-      <nav className="text-center my-10" aria-label="Page navigation example">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="Next"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={4}
-          pageCount={pageCount}
-          previousLabel="Prev"
-          renderOnZeroPageCount={null}
-          containerClassName="flex items-center justify-center -space-x-px text-sm"
-          pageLinkClassName="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          previousLinkClassName="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          nextLinkClassName="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          activeLinkClassName="flex items-center justify-center px-3 h-8 dark:bg-blue-800 bg-blue-800 text-white border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 font-medium"
-        />
-      </nav>
+      <hr className="my-8 border border-gray-200 dark:border-gray-700 border-dashed" />
+      <div className="flex flex-wrap gap-5 items-end justify-between my-10">
+        <div>
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Items per page</label>
+          <input onChange={ e => e.target.value < 5 ? dispatch(SET_ITEMS_PER_PAGE(5)) : dispatch(SET_ITEMS_PER_PAGE(e.target.value)) } defaultValue={itemsPerPage} min={5} minLength={3} name="itemsPerPage" type="number" id="displayItem" className="w-[100px] p-1 text-center text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" autoComplete="off" />
+        </div>
+        <nav aria-label="Page navigation example">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="Next"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={4}
+            pageCount={pageCount}
+            previousLabel="Prev"
+            renderOnZeroPageCount={null}
+            containerClassName="flex items-center justify-center -space-x-px text-sm"
+            pageLinkClassName="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            previousLinkClassName="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            nextLinkClassName="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            activeLinkClassName="flex items-center justify-center px-3 h-8 dark:bg-blue-700 bg-blue-600 text-white border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 font-medium"
+          />
+        </nav>
+      </div>
+      
+      
     </div>
   )
 }

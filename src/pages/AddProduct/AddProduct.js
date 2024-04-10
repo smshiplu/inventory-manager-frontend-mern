@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { selectIsLoading, createProduct } from "../../redux/features/product/productSlice";
 import { ComponentHeader, Loading, ProductForm, SidebarMenu } from "../../components";
 import { createProduct } from "../../services";
 import { toast } from "react-toastify";
-import { ADD_PRODUCT, selectProducts } from "../../store/productSlice";
-
+import { ADD_PRODUCT } from "../../store/productSlice";
+import { selectMenuToggle } from "../../store/btnSlice";
 
 const initialState = {
   name: "",
@@ -17,11 +15,8 @@ const initialState = {
 
 export const AddProduct = () => {
   const dispatch = useDispatch();
-  const products = useSelector(selectProducts);
-  // const navigate = useNavigate();
-
+  const menuToggle = useSelector(selectMenuToggle);
   const [isLoading, setIsLoading] = useState(false);
-  const [sidebarToggle, setSidebarToggle] = useState(false);
   const [product, setProduct] = useState(initialState);
   const [productImage, setProductImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
@@ -85,14 +80,13 @@ export const AddProduct = () => {
   }
 
   return (
-    <>
-    {isLoading && (
-      <Loading />
-    )}
     <main>
-      <ComponentHeader sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
-      <SidebarMenu sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
-      <div className={`p-4  ${sidebarToggle ? "md:ml-0 sm:ml-0" : "md:ml-64 sm:ml-64"}`}>
+      {isLoading && (
+        <Loading />
+      )}
+      <ComponentHeader />
+      <SidebarMenu />
+      <div className={`p-4  ${menuToggle ? "md:ml-0 sm:ml-0" : "md:ml-64 sm:ml-64"}`}>
         <div className="w-full mx-auto min-h-screen p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h3 className="text-2xl font-semibold dark:text-white my-2">Add New Product</h3>
         <hr className="my-8 border border-gray-200 dark:border-gray-700 border-dashed" />
@@ -109,7 +103,5 @@ export const AddProduct = () => {
         </div>
       </div>
     </main>
-    </>
-
   )
 }

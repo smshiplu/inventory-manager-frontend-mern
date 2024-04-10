@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { BsThreeDots } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
-
 
 import { ComponentHeader, Loading, SidebarMenu } from "../../components";
 import { getUser } from "../../services";
@@ -19,8 +16,6 @@ export const UserProfile = () => {
   const dispatch = useDispatch();
   const menuToggle = useSelector(selectMenuToggle);
   const user = useSelector(selectUser);
-
-  const [sidebarToggle, setSidebarToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [actionToggleBtn, setActionToggleBtn] = useState(false);
   

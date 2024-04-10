@@ -26,7 +26,7 @@ export const Stats = () => {
 
   return (
     <div>
-      <h3 className="text-2xl dark:text-white mt-2 mb-4">Inventory Stats</h3>
+      <h3 className="text-2xl dark:text-white md:text-left text-center mt-2 mb-4">Inventory Stats</h3>
       <div className="flex flex-wrap items-center justify-center gap-2">
         
         <div className="flex items-center justify-center gap-2 w-48 h-20 p-2 bg-purple-600 text-white border border-gray-200 rounded-lg shadow hover:bg-purple-500 hover:scale-95 focus:scale-95 transition">
