@@ -50,10 +50,10 @@ export const Dashboard = () => {
     } else if(searchTerm.length && searchedProducts.length === 0) {
       dispatch(GET_ALL_PRODUCTS([]));
     } else {
-      // getProducts();
-      dispatch(GET_ALL_PRODUCTS([...productsForStat]));
+      getProducts();
+      // dispatch(GET_ALL_PRODUCTS([...productsForStat]));
     }
-  }, [dispatch, searchTerm, searchedProducts, productsForStat]); //eslint-disable-line
+  }, [dispatch, searchTerm, searchedProducts]); //eslint-disable-line
   
 
   const handleDelete = async (id) => {

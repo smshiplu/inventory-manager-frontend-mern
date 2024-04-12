@@ -27,12 +27,10 @@ export const LoggedInMenu = ({setIsLoading}) => {
   return (
     <>
     <li className="flex items-center justify-center ">
-      <button className="hover:scale-95 focus:scale-95 transition">
-        <NavLink to="/dashboard" className="px-4 py-2 rounded-sm">Dashboard</NavLink>
-      </button>
+      <NavLink to="/dashboard" className="px-4 py-2 rounded-lg hover:scale-95 focus:scale-95 transition">Dashboard</NavLink>
     </li>
     <li className="flex items-center justify-center ">
-      <button onClick={handleLogout} className="bg-rose-600 px-4 py-2 rounded-sm hover:scale-95 focus:scale-95 transition">Logout</button>
+      <button onClick={handleLogout} className="bg-rose-600 px-4 py-2 rounded-lg hover:scale-95 focus:scale-95 transition">Logout</button>
     </li>
     </>
   )
