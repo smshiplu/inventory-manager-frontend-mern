@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 // Create Product
 export const createProduct = async (formData) => {
   try {
-    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products`, formData);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products`, formData);
     toast.success("Product created successfully");
-    return response.data;
+    // return response.data;
 
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
