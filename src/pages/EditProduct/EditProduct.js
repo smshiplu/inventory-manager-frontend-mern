@@ -78,9 +78,19 @@ export const EditProduct = () => {
     if(productImage) {
       formData.append("image", productImage);
     }
-
-    await updateProduct(id, formData);
-    navigate("/dashboard");
+    
+    setIsLoading(true)
+    try {
+      await updateProduct(id, formData);
+      setIsLoading(false);
+      navigate("/dashboard");
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  
   }
 
   return (
