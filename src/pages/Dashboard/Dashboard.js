@@ -32,11 +32,14 @@ export const Dashboard = () => {
     } catch (error) {
       setIsLoading(false);
       toast.error(error)
+    } finally {
+      setIsLoading(false);
     }
   }
   useEffect(() => {
     if(productsForStat.length < 1) {
       getProducts();
+      setIsLoading(false);
     }
   }, [productsForStat]); //eslint-disable-line
 
@@ -65,6 +68,8 @@ export const Dashboard = () => {
     } catch (error) {
       setIsLoading(false);
       toast.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 

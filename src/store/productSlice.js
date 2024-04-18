@@ -103,27 +103,34 @@ export const selectStoreValue = (state) => {
 
 export const selectStockOut = (state) => {
   const products = state.product.productsForStat;
-  const stockOutProducts = products.filter(product => product.quantity < 1);
-  return stockOutProducts.length;
+  if(products) {
+    const stockOutProducts = products.filter(product => product.quantity < 1);
+    return stockOutProducts.length;
+  }
 }
 
 export const selectStockLow = (state) => {
   const products = state.product.productsForStat;
-  const stockLowProducts = products.filter(product => product.quantity <= 5 && product.quantity > 0);
-  return stockLowProducts.length;
+  if(products) {
+    const stockLowProducts = products.filter(product => product.quantity <= 5 && product.quantity > 0);
+    return stockLowProducts.length;
+  }
 }
 
 export const selectTotalCategory = (state) => {
   const products = state.product.productsForStat;
-  const allCat = products.map(product => product.category);
-  // return [...new Set(allCat)].length;
-  const uniqueCat = allCat.reduce((acc, item) => {
-    if(!acc.includes(item)) {
-      acc.push(item);
-    }
-    return acc;
-  }, []);
-  return uniqueCat.length;
+  if(products) {
+    const allCat = products.map(product => product.category);
+    // return [...new Set(allCat)].length;
+    const uniqueCat = allCat.reduce((acc, item) => {
+      if(!acc.includes(item)) {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+    return uniqueCat.length;
+  }
+  
 }
 
 export const selectTotalProduct = (state) => {
