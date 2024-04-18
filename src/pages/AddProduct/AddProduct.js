@@ -59,9 +59,8 @@ export const AddProduct = () => {
     setIsLoading(true);
     try {
       const data = await createProduct(formData);
-      
       dispatch(ADD_PRODUCT(data));
-        
+
       // resets
       e.target.reset();
       setProduct(initialState);

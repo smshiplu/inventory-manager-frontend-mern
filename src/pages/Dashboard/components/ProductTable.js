@@ -11,7 +11,7 @@ export const ProductTable = ({ products, isLoading, handleDelete }) => {
   const dispatch = useDispatch();
   const itemsPerPage = useSelector(selectItemsPerPage);
   const [itemOffset, setItemOffset] = useState(0);
-  const [currentItems, setCurrentItems] = useState([]);
+  const [currentItems, setCurrentItems] = useState([...products]);
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
