@@ -59,21 +59,17 @@ export const AddProduct = () => {
     setIsLoading(true);
     try {
       const data = await createProduct(formData);
-      if(data) {
-        dispatch(ADD_PRODUCT(data));
+      
+      dispatch(ADD_PRODUCT(data));
         
-        // resets
-        e.target.reset();
-        setProduct(initialState);
-        setProductImage("");
-        e.target.image.value = "";
-        setImagePreview(null);
-        setDescription("");
-        setIsLoading(false);
-      } else {
-        setIsLoading(false);
-        toast.error(data);
-      }
+      // resets
+      e.target.reset();
+      setProduct(initialState);
+      setProductImage("");
+      e.target.image.value = "";
+      setImagePreview(null);
+      setDescription("");
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       toast.error(error.message);
