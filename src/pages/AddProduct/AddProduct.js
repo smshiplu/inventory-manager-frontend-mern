@@ -63,6 +63,7 @@ export const AddProduct = () => {
         dispatch(ADD_PRODUCT(data));
         
         // resets
+        e.target.reset();
         setProduct(initialState);
         setProductImage("");
         e.target.image.value = "";
