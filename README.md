@@ -3,7 +3,7 @@
 ## 🚀 Project Overview
 This is a full-stack inventory management web application built using the MERN stack — MongoDB, Express.js, React, and Node.js. Designed to help users track and manage inventory with ease, the app supports adding new items, updating stock levels, and viewing item details through a clean and intuitive interface.
 
-## 🧠 What I Learned
+### 🧠 What I Learned
 1. Full-Stack Architecture in Practice
 - I gained hands-on experience in building a complete web app from scratch, integrating frontend and backend seamlessly.
 - Learned how to structure a scalable codebase that separates concerns between client and server.
@@ -28,6 +28,14 @@ This is a full-stack inventory management web application built using the MERN s
 7. Deployment & DevOps
 - Deployed the app using services like Render and connected it to a cloud-hosted MongoDB instance.
 - Learned how to manage environment variables and configure build scripts.
+
+### 🛠️ Tech Stack
+
+- HTML/Tailwind CSS
+- React
+- Redux
+- MongoDb
+- Mode, Express and Mongoose
 
 ### 🌱 Personal Growth
 This project was more than just code — it was a deep dive into the world of full-stack development. It challenged me to think holistically, solve real-world problems, and polish my skills across the stack. I now feel more confident in building production-ready applications and collaborating on larger projects.
