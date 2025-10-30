@@ -68,7 +68,7 @@ export const ProductDetail = () => {
               <div className="p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
                 <hr />
-                <ul className="my-4 flex flex-col gap-3">
+                <ul className="my-4 flex flex-col gap-3 text-gray-800 dark:text-white">
                   <li className="flex items-center gap-2"><FaArrowRight /><span className="font-bold">Availability :</span> 
                   {quantity < 1 
                     ? (<code className="bg-gray-300 px-2 rounded font-medium text-rose-700 text-lg">Stock Out</code>)

@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import { TbCircleLetterP } from "react-icons/tb";
-import { MdDashboard } from "react-icons/md";
+import { TbHome } from "react-icons/tb";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { RiProfileFill } from "react-icons/ri";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
@@ -29,13 +29,13 @@ export const SidebarMenu = () => {
         <ul className="space-y-2 font-medium">
           <li>
             <Link to="/"  onClick={() => dispatch(SET_DROPDOWN_TOGGLE(false))} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group hover:scale-95 focus:scale-95 transition">
-                <TbCircleLetterP className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                <TbHome className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
                 <span className="ms-3">Home</span>
             </Link>
           </li>
           <li>
               <NavLink to="/dashboard" onClick={() => dispatch(SET_DROPDOWN_TOGGLE(false))} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group hover:scale-95 focus:scale-95 transition">
-                <MdDashboard className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <LuLayoutDashboard className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                 <span className="ms-3">Dashboard</span>
               </NavLink>
           </li>

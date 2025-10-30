@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { TbCircleLetterP } from "react-icons/tb";
+import { TbCircleLetterI } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { Loading } from "../Elements/Loading";
 
@@ -19,9 +19,10 @@ export const Header = () => {
     )}
     <header className="w-full bg-blue-900 text-white">
       <nav className="container max-w-screen-xl mx-auto p-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-col md:flex-row gap-8">
           <Link to="/" className="flex items-center ">
-            <TbCircleLetterP className="text-4xl" /></Link>
+            <TbCircleLetterI className="text-6xl" />
+          </Link>
             <ul className="flex gap-2">
               {isLoggedIn ? <LoggedInMenu setIsLoading={setIsLoading} /> : <LoggedOutMenu />}
             </ul>

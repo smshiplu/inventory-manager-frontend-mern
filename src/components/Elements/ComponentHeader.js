@@ -38,7 +38,7 @@ export const ComponentHeader = () => {
           <button onClick={() => setDarkModeToggle(false)}><MdOutlineWbSunny /></button>
         )}
         
-        <p className="capitalize text-lg">
+        <p className="capitalize text-sm">
           Welcome, <span className=" font-semibold">
           {name}</span>
         </p>

@@ -79,7 +79,7 @@ export const Dashboard = () => {
       <SidebarMenu />
 
       <section className={`p-4  ${menuToggle ? "md:ml-0 sm:ml-0" : "md:ml-64 sm:ml-64"}`}>
-        <div className="w-full mx-auto min-h-screen p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <div className="w-full mx-auto min-h-screen mb-10 p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
           <Stats />
           <hr className="my-8 border border-gray-200 dark:border-gray-700 border-dashed" />
           <ProductSearch 

@@ -111,13 +111,13 @@ export const Login = () => {
   }
 
   return (
-    <main className="w-full min-h-dvh bg-blue-900">
+    <main className="w-full bg-blue-900">
       {isLoading && (
         <Loading />
       )}
       <div className="container max-w-screen-xl mx-auto p-4">
-        <div className="flex items-center justify-center h-dvh">
-          <div className="anim-bounce w-96 p-4 flex flex-col items-center justify-center  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex items-center justify-center min-h-dvh">
+          <div className="anim-bounce max-w-96 w-full p-4 mb-8 flex flex-col items-center justify-center  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <BiLogIn className="text-4xl text-gray-400"/>
             <h2 className="text-3xl font-semibold text-orange-600">Login</h2>
             <form onSubmit={ handleLogin } name="loginForm" className=" flex flex-wrap items-center justify-center gap-4 my-4">
@@ -132,7 +132,7 @@ export const Login = () => {
 
               <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
             </form>
-            <ul className="w-full flex flex-col gap-1">
+            <ul className="w-full flex flex-col gap-1 text-gray-800">
               <li><button onClick={handleGuestLogin} className="hover:scale-95 focus:scale-95 transition underline underline-offset-4">Login as Guest</button></li>
               <li><button className="cursor-text hover:scale-95 focus:scale-95 transition">Forgot Password? <Link to="/forgotPassword" className="underline underline-offset-4">Reset</Link></button></li>
               <li><button className="cursor-text hover:scale-95 focus:scale-95 transition">Don't have an account? <Link to="/register" className="underline underline-offset-4">Register</Link></button></li>

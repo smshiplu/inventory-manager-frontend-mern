@@ -3,7 +3,7 @@ import HeroImage from "../../assets/inv-img.png";
 
 export const Home = () => {
   return (
-    <main className="w-full min-h-dvh bg-blue-900 text-white">
+    <main className="w-full bg-blue-900 text-white">
       <div className="container max-w-screen-xl mx-auto p-4">
         <div className="mt-10 flex flex-col md:flex-row justify-between">
           <div className="flex-1">

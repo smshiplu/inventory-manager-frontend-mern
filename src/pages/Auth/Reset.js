@@ -46,10 +46,10 @@ export const Reset = () => {
       {isLoading && (
         <Loading />
       )}
-      <main className="w-full min-h-dvh bg-blue-900">
+      <main className="w-full bg-blue-900">
         <div className="container max-w-screen-xl mx-auto p-4">
-          <div className="flex items-center justify-center h-dvh">
-            <div className="anim-bounce w-96 p-4 flex flex-col items-center justify-center  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="flex items-center justify-center min-h-dvh">
+            <div className="anim-bounce max-w-96 w-full p-4 flex flex-col items-center justify-center  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <TbPasswordUser className="text-4xl text-gray-400"/>
               <h2 className="text-3xl font-semibold text-orange-600">Reset Password</h2>
               <form onSubmit={handleResetPassword} name="registrationForm" className="flex flex-wrap items-center justify-center gap-4 my-4">

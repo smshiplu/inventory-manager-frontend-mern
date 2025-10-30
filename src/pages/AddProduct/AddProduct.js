@@ -83,7 +83,7 @@ export const AddProduct = () => {
       <ComponentHeader />
       <SidebarMenu />
       <div className={`p-4  ${menuToggle ? "md:ml-0 sm:ml-0" : "md:ml-64 sm:ml-64"}`}>
-        <div className="w-full mx-auto min-h-screen p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <div className="w-full mx-auto min-h-screen p-4 mb-10 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h3 className="text-2xl font-semibold dark:text-white my-2">Add New Product</h3>
         <hr className="my-8 border border-gray-200 dark:border-gray-700 border-dashed" />
         <ProductForm 
